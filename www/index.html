@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0f8a63">
+<meta name="color-scheme" content="light dark">
+<title>وِرد</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <header class="top">
+    <div class="top-txt">
+      <h1 id="title">وِرد</h1>
+      <p id="subtitle"></p>
+    </div>
+    <div class="brand" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C4 4.7 4.7 4 5.5 4H11v15H5.5A1.5 1.5 0 0 0 4 20.5z"/><path d="M20 5.5c0-.8-.7-1.5-1.5-1.5H13v15h5.5a1.5 1.5 0 0 1 1.5 1.5z"/></svg>
+    </div>
+  </header>
+
+  <main id="view"></main>
+
+  <nav class="nav" id="nav" aria-label="التنقل">
+    <button data-act="tab" data-t="home" aria-label="الرئيسية">
+      <svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg><span>الرئيسية</span>
+    </button>
+    <button data-act="tab" data-t="index" aria-label="الفهرس">
+      <svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg><span>الفهرس</span>
+    </button>
+    <button class="fab" data-act="tab" data-t="log" aria-label="تسجيل قراءة">
+      <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+    </button>
+    <button data-act="tab" data-t="history" aria-label="السجل">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>السجل</span>
+    </button>
+    <button data-act="tab" data-t="settings" aria-label="الإعدادات">
+      <svg viewBox="0 0 24 24"><path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></svg><span>الإعدادات</span>
+    </button>
+  </nav>
+</div>
+
+<div id="sheet" class="sheet-wrap hidden">
+  <div class="sheet-bg" data-act="closeSheet"></div>
+  <div class="sheet" role="dialog" aria-modal="true">
+    <div class="grab"></div>
+    <div id="sheetBody"></div>
+  </div>
+</div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

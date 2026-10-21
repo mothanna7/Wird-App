@@ -1,0 +1,14 @@
+{
+  "name": "wird",
+  "version": "1.0.0",
+  "description": "وِرد - متابعة ختمات القرآن مع لوحة إحصائيات قابلة للتخصيص",
+  "private": true,
+  "dependencies": {
+    "@capacitor/android": "^7.6.0",
+    "@capacitor/core": "^7.6.0"
+  },
+  "devDependencies": {
+    "@capacitor/assets": "^3.0.5",
+    "@capacitor/cli": "^7.6.0"
+  }
+}

@@ -1,0 +1,59 @@
+name: Build APK
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Add Android platform
+        run: npx cap add android
+
+      - name: Generate app icons
+        run: npx capacitor-assets generate --android --iconBackgroundColor '#0f8a63' --iconBackgroundColorDark '#0d1311' || echo "icon generation skipped"
+
+      - name: Sync web assets
+        run: npx cap sync android
+
+      - name: Build debug APK
+        working-directory: android
+        run: |
+          chmod +x gradlew
+          ./gradlew assembleDebug --no-daemon
+
+      - name: Rename APK
+        run: cp android/app/build/outputs/apk/debug/app-debug.apk wird.apk
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: wird-apk
+          path: wird.apk
+
+      - name: Publish release with direct APK download
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "build-${{ github.run_number }}" wird.apk \
+            --title "وِرد - بناء ${{ github.run_number }}" \
+            --notes "ملف APK جاهز للتثبيت على أندرويد."

@@ -1,0 +1,9 @@
+{
+  "appId": "com.wird.tracker",
+  "appName": "وِرد",
+  "webDir": "www",
+  "android": {
+    "backgroundColor": "#f4f3ee",
+    "allowMixedContent": false
+  }
+}
